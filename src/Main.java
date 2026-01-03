@@ -20,6 +20,13 @@ public class Main {
         employees.add(new Employee(4, "Jack", "IT", 72000));
         employees.add(new Employee(5, "Ethan", "HR", 58000));
 
+        //check whether the employee list is empty or not
+        if(employees.isEmpty()){
+            System.out.println("No employees found.");
+        } else {
+            System.out.println("Employees are available.");
+        }
+
         //sort the employees by name and if name is same then sort by department
         Comparator<Employee> employeeComparator = Comparator.comparing(Employee::getName)
                 .thenComparing(Employee::getDepartment);
@@ -33,6 +40,8 @@ public class Main {
         for(Employee emp : employees){
             System.out.println(emp);
         }
+        System.out.println("-----------------------------------");
+        System.out.println("Total Employees: " + employees.size());
 
     }
 }
