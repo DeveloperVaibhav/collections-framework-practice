@@ -31,6 +31,7 @@ public class Main {
         Comparator<Employee> employeeComparator = Comparator.comparing(Employee::getName)
                 .thenComparing(Employee::getDepartment);
         employees.sort(employeeComparator);
+        //Collections.sort(employees, employeeComparator);
 
         //System.out.println("Sorted Employees:" + employees);
         System.out.println("-----------------------------------");
@@ -42,6 +43,26 @@ public class Main {
         }
         System.out.println("-----------------------------------");
         System.out.println("Total Employees: " + employees.size());
+
+        //check if an employee with a specific id exists in the list or not
+        //contains internally uses equals and hashcode methods to compare objects(so)
+        Employee temp = new Employee(3, "Charlie", "Finance", 80000);
+        if(employees.contains(temp)){
+            System.out.println("Employee with ID 3 exists in the list.");
+        } else {
+            System.out.println("Employee with ID 3 does not exist in the list.");
+        }
+
+        //remove an employee with a specific id from the list
+        employees.remove(4);
+
+        //remove all employees from HR department
+        employees.removeIf(emp -> emp.getDepartment().equals("HR"));
+        System.out.println("Employees after removal:"+ employees);
+
+        //clear the entire employee list
+        employees.clear();
+        System.out.println("Employee list: " + employees);
 
     }
 }
